@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func bookById(){
+func bookById(id string)(*book, error){
 
 }
 func getBooks(c *gin.Context) {
