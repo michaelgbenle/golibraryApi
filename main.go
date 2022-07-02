@@ -67,7 +67,12 @@ func checkOutBook(c *gin.Context) {
 }
 
 func checkInBook(c *gin.Context) {
-
+	id := c.Query("id")
+	sBook, err := bookById(id)
+	if err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
+		return
+	}
 }
 
 func main() {
