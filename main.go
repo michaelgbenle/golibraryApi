@@ -62,6 +62,8 @@ func checkOutBook(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not available"})
 		return
 	}
+	sBook.Quantity -= 1
+	c.IndentedJSON(http.StatusOK, gin.H{"message": sBook})
 }
 
 func main() {
