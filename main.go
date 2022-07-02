@@ -36,7 +36,7 @@ func addBook(c *gin.Context) {
 	books = append(books, newBook)
 	c.IndentedJSON(http.StatusCreated, gin.H{"message": newBook})
 }
-func checkOutBook() {}
+func checkOutBook(c *gin.Context) {}
 
 func main() {
 	router := gin.Default()
