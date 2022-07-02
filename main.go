@@ -2,6 +2,9 @@ package main
 
 import "github.com/gin-gonic/gin"
 
+func getBooks() {
+
+}
 func main() {
 	router := gin.Default()
 }
