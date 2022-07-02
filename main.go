@@ -10,6 +10,7 @@ func getBooks(c *gin.Context) {
 }
 func addBooks(c *gin.Context) {
 	var newBook book
+	c.ShouldBindJSON(newBook)
 
 }
 func main() {
