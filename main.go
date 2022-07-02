@@ -8,5 +8,5 @@ type book struct {
 	ID       string
 	Title    string
 	Author   string
-	Quantity string
+	Quantity int
 }
