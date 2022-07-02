@@ -63,7 +63,10 @@ func checkOutBook(c *gin.Context) {
 		return
 	}
 	sBook.Quantity -= 1
-	c.IndentedJSON(http.StatusOK, gin.H{"message": sBook})
+	c.IndentedJSON(http.StatusOK, gin.H{
+		"message": "book successfully returned",
+		"updated": sBook,
+	})
 }
 
 func checkInBook(c *gin.Context) {
