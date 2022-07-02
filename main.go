@@ -5,6 +5,9 @@ import (
 	"net/http"
 )
 
+func bookById(){
+
+}
 func getBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
 }
