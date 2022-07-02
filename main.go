@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
+
 type book struct {
 	ID       string `json:"id"`
 	Title    string `json:"title"`
@@ -56,7 +57,9 @@ func checkOutBook(c *gin.Context) {
 	if err != nil {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
 	}
-	if
+	if sBook.Quantity <= 0 {
+
+	}
 }
 
 func main() {
