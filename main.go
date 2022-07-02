@@ -1,9 +1,12 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
 func getBooks(c *gin.Context) {
-
+	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
 }
 func main() {
 	router := gin.Default()
