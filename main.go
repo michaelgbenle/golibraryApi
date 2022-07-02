@@ -13,6 +13,8 @@ func addBooks(c *gin.Context) {
 	err := c.ShouldBindJSON(newBook)
 	if err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": "unable to bind json"})
+		c.Abort()
+		return
 	}
 
 }
