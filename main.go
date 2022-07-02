@@ -10,7 +10,10 @@ func getBooks(c *gin.Context) {
 }
 func addBooks(c *gin.Context) {
 	var newBook book
-	c.ShouldBindJSON(newBook)
+	err := c.ShouldBindJSON(newBook)
+	if err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": "unable to bind json"})
+	}
 
 }
 func main() {
