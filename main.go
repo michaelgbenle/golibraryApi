@@ -7,7 +7,9 @@ import (
 
 func bookById(id string)(*book, error){
 for i,v := range books{
-
+	if v.ID ==id {
+		return &books[i], nil
+	}
 }
 }
 func getBooks(c *gin.Context) {
