@@ -8,6 +8,9 @@ import (
 func getBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
 }
+func addBooks() {
+
+}
 func main() {
 	router := gin.Default()
 	router.GET("/books", getBooks)
