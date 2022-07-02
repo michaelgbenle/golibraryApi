@@ -8,6 +8,9 @@ import (
 func getBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
 }
+func getBookById() {
+
+}
 func addBook(c *gin.Context) {
 	var newBook book
 	err := c.ShouldBindJSON(&newBook)
