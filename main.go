@@ -17,6 +17,7 @@ func addBook(c *gin.Context) {
 		return
 	}
 	books = append(books, newBook)
+	c.IndentedJSON(http.StatusCreated, gin.H{})
 
 }
 func main() {
