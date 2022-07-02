@@ -11,4 +11,8 @@ type book struct {
 	Quantity int    `json:"quantity"`
 }
 
-var books
+var books = []book{
+	{ID: "1"},
+	{},
+	{},
+}
