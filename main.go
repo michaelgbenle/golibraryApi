@@ -71,6 +71,7 @@ func main() {
 	router.GET("/books", getBooks)
 	router.POST("/addbook", addBook)
 	router.GET("/getbook/:id", getBookById)
+	router.PATCH("/checkout", checkOutBook)
 	err := router.Run("localhost:8080")
 	if err != nil {
 		return
