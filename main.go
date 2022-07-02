@@ -9,6 +9,7 @@ func getBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
 }
 func addBooks(c *gin.Context) {
+	var newBook book
 
 }
 func main() {
