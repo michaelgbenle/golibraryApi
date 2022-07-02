@@ -66,6 +66,10 @@ func checkOutBook(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": sBook})
 }
 
+func checkInBook(c *gin.Context) {
+
+}
+
 func main() {
 	router := gin.Default()
 	router.GET("/books", getBooks)
