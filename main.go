@@ -22,6 +22,7 @@ func addBooks(c *gin.Context) {
 func main() {
 	router := gin.Default()
 	router.GET("/books", getBooks)
+	router.POST("/addbook")
 	err := router.Run("localhost:8080")
 	if err != nil {
 		return
