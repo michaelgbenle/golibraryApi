@@ -59,7 +59,8 @@ func checkOutBook(c *gin.Context) {
 		return
 	}
 	if sBook.Quantity <= 0 {
-
+		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not available"})
+		return
 	}
 }
 
