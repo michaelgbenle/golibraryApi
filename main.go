@@ -8,7 +8,7 @@ import (
 func getBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
 }
-func addBooks(c *gin.Context) {
+func addBook(c *gin.Context) {
 	var newBook book
 	err := c.ShouldBindJSON(newBook)
 	if err != nil {
@@ -22,7 +22,7 @@ func addBooks(c *gin.Context) {
 func main() {
 	router := gin.Default()
 	router.GET("/books", getBooks)
-	router.POST("/addbook")
+	router.POST("/addbook", addBook)
 	err := router.Run("localhost:8080")
 	if err != nil {
 		return
