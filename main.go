@@ -21,6 +21,7 @@ func getBookById(c *gin.Context) {
 	id := c.Param("id")
 	sBook, err := bookById(id)
 	if err != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
 		return
 	}
 	c.IndentedJSON(http.StatusOK, gin.H{"message": sBook})
