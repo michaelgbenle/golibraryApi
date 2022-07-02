@@ -76,6 +76,7 @@ func checkInBook(c *gin.Context) {
 	sBook.Quantity += 1
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": "book successfully returned",
+		"updated": sBook,
 	})
 }
 
