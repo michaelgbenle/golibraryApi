@@ -16,6 +16,7 @@ func addBooks(c *gin.Context) {
 		c.Abort()
 		return
 	}
+	books = append(books, newBook)
 
 }
 func main() {
