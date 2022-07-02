@@ -2,7 +2,7 @@ package main
 
 import "github.com/gin-gonic/gin"
 
-func getBooks() {
+func getBooks(c *gin.Context) {
 
 }
 func main() {
