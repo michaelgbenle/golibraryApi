@@ -6,7 +6,9 @@ import (
 )
 
 func bookById(id string)(*book, error){
+for i,v := range books{
 
+}
 }
 func getBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
