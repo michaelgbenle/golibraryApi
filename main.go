@@ -69,7 +69,7 @@ func checkOutBook(c *gin.Context) {
 	})
 }
 
-func checkInBook(c *gin.Context) {
+func returnBook(c *gin.Context) {
 	id := c.Query("id")
 	sBook, err := bookById(id)
 	if err != nil {
@@ -89,6 +89,7 @@ func main() {
 	router.POST("/addbook", addBook)
 	router.GET("/getbook/:id", getBookById)
 	router.PATCH("/checkout", checkOutBook)
+	router.PATCH("/return", returnBook)
 	err := router.Run("localhost:8080")
 	if err != nil {
 		return
