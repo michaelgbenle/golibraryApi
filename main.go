@@ -6,24 +6,24 @@ import (
 	"net/http"
 )
 
-func bookById(id string)(*book, error){
-for i,v := range books{
-	if v.ID ==id {
-		return &books[i], nil
+func bookById(id string) (*book, error) {
+	for i, v := range books {
+		if v.ID == id {
+			return &books[i], nil
+		}
 	}
-}
-return nil,errors.New("book not found")
+	return nil, errors.New("book not found")
 }
 func getBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
 }
 func getBookById(c gin.Context) {
-	id:= c.Param("id")
-	sBook, err:= bookById(id)
+	id := c.Param("id")
+	sBook, err := bookById(id)
 	if err != nil {
-		 return
+		return
 	}
-c.IndentedJSON(http.StatusOK,gin.H{"message":})
+	c.IndentedJSON(http.StatusOK, gin.H{"message": sBook})
 }
 func addBook(c *gin.Context) {
 	var newBook book
