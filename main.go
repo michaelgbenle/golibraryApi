@@ -73,6 +73,7 @@ func checkInBook(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
 		return
 	}
+	sBook.Quantity += 1
 }
 
 func main() {
