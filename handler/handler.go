@@ -59,7 +59,7 @@ func (h *Handler) CheckOutBook(c *gin.Context) {
 	})
 }
 
-func ReturnBook(c *gin.Context) {
+func (h *Handler) ReturnBook(c *gin.Context) {
 	id := c.Query("id")
 	sBook, err := bookById(id)
 	if err != nil {
