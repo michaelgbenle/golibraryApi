@@ -56,11 +56,12 @@ func (pdb *PostgresDb) Checkout(id, copies string) (*models.Book, error) {
 	book := &models.Book{}
 	intCopies, _ := strconv.Atoi(copies)
 	newId, _ := strconv.Atoi(id)
+	sbook, _ := pdb.BookById(id)
 
-	if err := pdb.DB.Model(book).Where("id", uint(newId)).Update("quantity", book.Quantity-intCopies).Error; err != nil {
+	if err := pdb.DB.Model(book).Where("id", uint(newId)).Update("quantity", sbook.Quantity-intCopies).Error; err != nil {
 		return nil, err
 	}
-	return book, nil
+	return sbook, nil
 }
 
 func (pdb *PostgresDb) Checkin(id, copies string) (*models.Book, error) {
