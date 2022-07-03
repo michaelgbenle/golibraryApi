@@ -18,7 +18,7 @@ func bookById(id string) (*book, error) {
 	}
 	return nil, errors.New("book not found")
 }
-func GetBooks(c *gin.Context) {
+func (h *Handler) GetBooks(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
 }
 func GetBookById(c *gin.Context) {
@@ -30,7 +30,7 @@ func GetBookById(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusOK, gin.H{"message": sBook})
 }
-func AddBook(c *gin.Context) {
+func (h *Handler) AddBook(c *gin.Context) {
 	var newBook book
 	err := c.ShouldBindJSON(&newBook)
 	if err != nil {
