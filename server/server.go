@@ -2,7 +2,7 @@ package server
 
 import "golibraryApi/database"
 
-func Start(){
+func Start() {
 	values := database.InitializeDbParameters()
-	var PDB
+	var PDB = new(database.PostgresDb)
 }
