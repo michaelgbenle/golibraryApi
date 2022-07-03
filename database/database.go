@@ -61,7 +61,7 @@ func (pdb *PostgresDb) Checkout(id, copies string) (*models.Book, error) {
 	if err := pdb.DB.Model(book).Where("id", uint(newId)).Update("quantity", sbook.Quantity-intCopies).Error; err != nil {
 		return nil, err
 	}
-	return sbook, nil
+	return book, nil
 }
 
 func (pdb *PostgresDb) Checkin(id, copies string) (*models.Book, error) {
