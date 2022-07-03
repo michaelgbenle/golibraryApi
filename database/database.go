@@ -57,7 +57,7 @@ func (pdb *PostgresDb) Checkout(id, copies string) (*models.Book, error) {
 	intCopies, _ := strconv.Atoi(copies)
 	newId, _ := strconv.Atoi(id)
 
-	if err := pdb.DB.Model(book).Where("ID = ?", uint(newId)).Update(strconv.Itoa(book.Quantity), book.Quantity-intCopies).Error; err != nil {
+	if err := pdb.DB.Model(book).Update(strconv.Itoa(book.Quantity), book.Quantity-intCopies).Where("ID = ?", uint(newId)).Error; err != nil {
 		return nil, err
 	}
 	return book, nil

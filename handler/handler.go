@@ -71,6 +71,7 @@ func (h *Handler) CheckOutBook(c *gin.Context) {
 		return
 	}
 	log.Println(id)
+	log.Println(copies)
 	newBook, berr := h.DB.Checkout(id, copies)
 	if berr != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": " could not checkout book"})
