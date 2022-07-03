@@ -25,7 +25,7 @@ func GetBookById(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusOK, gin.H{"message": sBook})
 }
-func addBook(c *gin.Context) {
+func AddBook(c *gin.Context) {
 	var newBook book
 	err := c.ShouldBindJSON(&newBook)
 	if err != nil {
