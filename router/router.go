@@ -7,9 +7,9 @@ import (
 
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
-	router.GET("/books", handler.getBooks)
-	router.POST("/addbook", handler.addBook)
-	router.GET("/getbook/:id", handler.getBookById)
-	router.PATCH("/checkout", handler.checkOutBook)
-	router.PATCH("/return", handler.returnBook)
+	router.GET("/books", handler.GetBooks)
+	router.POST("/addbook", handler.AddBook)
+	router.GET("/getbook/:id", handler.AetBookById)
+	router.PATCH("/checkout", handler.AheckOutBook)
+	router.PATCH("/return", handler.ReturnBook)
 }
