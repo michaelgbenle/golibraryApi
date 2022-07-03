@@ -10,22 +10,26 @@ type Handler struct {
 	DB database.DB
 }
 
-func bookById(id string) (*book, error) {
-	for i, v := range books {
-		if v.ID == id {
-			return &books[i], nil
-		}
-	}
-	return nil, errors.New("book not found")
-}
+// GetBooks func bookById(id string) (*book, error) {
+//	for i, v := range books {
+//		if v.ID == id {
+//			return &books[i], nil
+//		}
+//	}
+//	return nil, errors.New("book not found")
+//}
+
 func (h *Handler) GetBooks(c *gin.Context) {
 	books, err := h.DB.GetAllBooks()
 	if err != nil {
-		c.IndentedJSON(http.StatusOK, gin.H{"message": books})
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{
+			"error": "error fetching books"})
 		return
 	}
-
+	c.IndentedJSON(http.StatusOK, gin.H{
+		"message": books})
 }
+
 func (h *Handler) GetBookById(c *gin.Context) {
 	id := c.Param("id")
 	sBook, err := bookById(id)
