@@ -11,6 +11,7 @@ type DB interface {
 	GetAllBooks() ([]models.Book, error)
 	BookById(id string) (*models.Book, error)
 	AddNewBook(book models.Book) error
+	Checkout(id, copies string) (models.Book, error)
 }
 
 type DbParameters struct {
