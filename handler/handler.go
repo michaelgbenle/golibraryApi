@@ -81,6 +81,10 @@ func (h *Handler) ReturnBook(c *gin.Context) {
 		return
 	}
 	newBook, berr := h.DB.Checkin(id, copies)
+	if berr != nil {
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": " could not checkout book"})
+		return
+	}
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": "book successfully returned",
 		"updated": book,
