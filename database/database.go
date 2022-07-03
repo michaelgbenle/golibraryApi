@@ -61,3 +61,13 @@ func (pdb *PostgresDb) Checkout(id, copies string) (*models.Book, error) {
 	}
 	return book, nil
 }
+
+func (pdb *PostgresDb) Checkin(id, copies string) (*models.Book, error) {
+	var book *models.Book
+	intCopies, _ := strconv.Atoi(copies)
+	newQuantity := book.Quantity - intCopies
+	if err := pdb.DB.Model(book).Where("id = ?", id).Update(strconv.Itoa(book.Quantity), newQuantity).Error; err != nil {
+		return nil, err
+	}
+	return book, nil
+}
