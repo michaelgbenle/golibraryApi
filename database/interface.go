@@ -10,3 +10,7 @@ type DbParameters struct {
 	DbName   string
 	Port     string
 }
+
+func InitializeDbParameters() {
+
+}
