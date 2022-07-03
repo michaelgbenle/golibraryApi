@@ -23,5 +23,8 @@ func (pdb *PostgresDb) SetupDb() {
 	}
 	pdb.DB = db
 
-	err = pdb.DB.AutoMigrate(models.Book{})
+	dberr := pdb.DB.AutoMigrate(models.Book{})
+	if dberr != nil {
+		log.Fatal(dberr)
+	}
 }
