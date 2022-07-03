@@ -1,6 +1,9 @@
 package main
 
-import "golibraryApi/router"
+import (
+	"golibraryApi/router"
+	"log"
+)
 
 type book struct {
 	ID       string `json:"id"`
@@ -19,5 +22,8 @@ var books = []book{
 func main() {
 	library := router.SetupRouter()
 	err := library.Run(":8080")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 }
