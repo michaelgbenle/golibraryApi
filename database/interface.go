@@ -1,6 +1,10 @@
 package database
 
-import "os"
+import (
+	"github.com/joho/godotenv"
+	"log"
+	"os"
+)
 
 type DB interface {
 }
@@ -14,6 +18,10 @@ type DbParameters struct {
 }
 
 func InitializeDbParameters() DbParameters {
+	errEnv := godotenv.Load()
+	if errEnv != nil {
+		log.Fatal("Error loading .env file")
+	}
 	host := os.Getenv("DB_HOST")
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")

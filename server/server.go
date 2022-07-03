@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func Start() {
+func Start() error {
 	values := database.InitializeDbParameters()
 	var PDB = new(database.PostgresDb)
 	h := &handler.Handler{DB: PDB}
@@ -16,5 +16,5 @@ func Start() {
 		log.Println("Error trying to Init", err)
 		return err
 	}
-
+	return nil
 }
