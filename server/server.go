@@ -13,8 +13,8 @@ func Start() error {
 
 	err := PDB.SetupDb(values.Host, values.User, values.Password, values.DbName, values.Port)
 	if err != nil {
-		log.Println("Error trying to Init", err)
-		return err
+		log.Fatal(err)
 	}
+
 	return nil
 }
