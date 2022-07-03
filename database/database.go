@@ -67,7 +67,7 @@ func (pdb *PostgresDb) Checkin(id, copies string) (*models.Book, error) {
 	var book *models.Book
 	intCopies, _ := strconv.Atoi(copies)
 	newQuantity := book.Quantity + intCopies
-	if err := pdb.DB.Model(book).Where("id = ?", id).Update(strconv.Itoa(book.Quantity), newQuantity).Error; err != nil {
+	if err := pdb.DB.Model(book).Where("ID = ?", id).Update(strconv.Itoa(book.Quantity), newQuantity).Error; err != nil {
 		return nil, err
 	}
 	return book, nil
