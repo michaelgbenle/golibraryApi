@@ -11,8 +11,8 @@ func SetupRouter(h *handler.Handler) (*gin.Engine, string) {
 	router.GET("/books", h.GetBooks)
 	router.POST("/addbook", h.AddBook)
 	router.GET("/getbook/:id", handler.GetBookById)
-	router.PATCH("/checkout", handler.CheckOutBook)
-	router.PATCH("/return", handler.ReturnBook)
+	router.PATCH("/checkout", h.CheckOutBook)
+	router.PATCH("/return", h.ReturnBook)
 	port := os.Getenv("PORT")
 
 	return router, port
