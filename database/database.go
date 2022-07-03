@@ -6,6 +6,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
+	"strconv"
 )
 
 type PostgresDb struct {
@@ -53,5 +54,7 @@ func (pdb *PostgresDb) AddNewBook(book models.Book) error {
 
 func (pdb *PostgresDb) Checkout(id, copies string) (models.Book, error) {
 	var book models.Book
+	intCopies,_ := strconv.Atoi(copies)
+	book.Quantity -= intCopies
 	if err := pdb.DB.Model(book).Where("id = ?", id).Update()
 }
