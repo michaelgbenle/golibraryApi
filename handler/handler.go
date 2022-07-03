@@ -54,7 +54,7 @@ func CheckOutBook(c *gin.Context) {
 	})
 }
 
-func returnBook(c *gin.Context) {
+func ReturnBook(c *gin.Context) {
 	id := c.Query("id")
 	sBook, err := bookById(id)
 	if err != nil {
