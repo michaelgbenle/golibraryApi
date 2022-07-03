@@ -1,5 +1,7 @@
 package database
 
+import "os"
+
 type DB interface {
 }
 
@@ -11,6 +13,18 @@ type DbParameters struct {
 	Port     string
 }
 
-func InitializeDbParameters() {
+func InitializeDbParameters() DbParameters {
+	host := os.Getenv("DB_HOST")
+	user := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASSWORD")
+	dbName := os.Getenv("DB_NAME")
+	port := os.Getenv("DB_PORT")
 
+	return DbParameters{
+		Host:     host,
+		User:     user,
+		Password: password,
+		DbName:   dbName,
+		Port:     port,
+	}
 }
