@@ -10,15 +10,6 @@ type Handler struct {
 	DB database.DB
 }
 
-// GetBooks func bookById(id string) (*book, error) {
-//	for i, v := range books {
-//		if v.ID == id {
-//			return &books[i], nil
-//		}
-//	}
-//	return nil, errors.New("book not found")
-//}
-
 func (h *Handler) GetBooks(c *gin.Context) {
 	books, err := h.DB.GetAllBooks()
 	if err != nil {
