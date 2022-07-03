@@ -19,6 +19,7 @@ func bookById(id string) (*book, error) {
 	return nil, errors.New("book not found")
 }
 func (h *Handler) GetBooks(c *gin.Context) {
+
 	c.IndentedJSON(http.StatusOK, gin.H{"message": books})
 }
 func (h *Handler) GetBookById(c *gin.Context) {
