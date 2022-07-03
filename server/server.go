@@ -3,6 +3,7 @@ package server
 import (
 	"golibraryApi/database"
 	"golibraryApi/handler"
+	"golibraryApi/router"
 	"log"
 )
 
@@ -15,6 +16,7 @@ func Start() error {
 	if err != nil {
 		log.Fatal(err)
 	}
+	route, port := router.SetupRouter(h)
 
 	return nil
 }

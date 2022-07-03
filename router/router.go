@@ -5,7 +5,7 @@ import (
 	"golibraryApi/handler"
 )
 
-func SetupRouter() *gin.Engine {
+func SetupRouter(h *handler.Handler) (*gin.Engine, string) {
 	router := gin.Default()
 	router.GET("/books", handler.GetBooks)
 	router.POST("/addbook", handler.AddBook)
@@ -13,5 +13,5 @@ func SetupRouter() *gin.Engine {
 	router.PATCH("/checkout", handler.CheckOutBook)
 	router.PATCH("/return", handler.ReturnBook)
 
-	return router
+	return router, port
 }
