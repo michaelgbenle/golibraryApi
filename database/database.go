@@ -1,6 +1,7 @@
 package database
 
 import (
+	"golibraryApi/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
@@ -22,5 +23,5 @@ func (pdb *PostgresDb) SetupDb() {
 	}
 	pdb.DB = db
 
-	err = pdb.DB.AutoMigrate(models.Book)
+	err = pdb.DB.AutoMigrate(models.Book{})
 }
