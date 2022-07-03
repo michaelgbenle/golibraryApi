@@ -5,6 +5,7 @@ import (
 	"golibraryApi/database"
 	"golibraryApi/models"
 	"net/http"
+	"strconv"
 )
 
 type Handler struct {
@@ -61,7 +62,8 @@ func (h *Handler) CheckOutBook(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not available"})
 		return
 	}
-	book.Quantity -= 1
+	intCopies, _ := strconv.Atoi(copies)
+	book.Quantity -= intCopies
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": "book successfully returned",
 		"updated": book,
