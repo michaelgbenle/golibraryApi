@@ -46,7 +46,7 @@ func (pdb *PostgresDb) BookById(id string) (*models.Book, error) {
 
 func (pdb *PostgresDb) AddNewBook(book models.Book) error {
 	if err := pdb.DB.Create(book).Error; err != nil {
-		return nil, err
+		return err
 	}
-	return &book, nil
+	return nil
 }
