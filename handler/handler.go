@@ -82,7 +82,7 @@ func (h *Handler) ReturnBook(c *gin.Context) {
 	}
 	newBook, berr := h.DB.Checkin(id, copies)
 	if berr != nil {
-		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": " could not checkout book"})
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": " could not update"})
 		return
 	}
 	c.IndentedJSON(http.StatusOK, gin.H{
