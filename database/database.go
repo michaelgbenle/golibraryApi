@@ -32,6 +32,7 @@ func (pdb *PostgresDb) GetAllBooks() ([]models.Book, error) {
 	var books []models.Book
 	if err := pdb.DB.Find(&books).Error; err != nil {
 		log.Println("Could not find book", err)
+		return nil, err
 	}
 
 	return books, nil
