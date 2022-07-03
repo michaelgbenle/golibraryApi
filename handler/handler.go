@@ -43,7 +43,10 @@ func (h *Handler) AddBook(c *gin.Context) {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": "unable to add book"})
 		return
 	}
-	c.IndentedJSON(http.StatusCreated, gin.H{"message": newBook})
+	c.IndentedJSON(http.StatusCreated, gin.H{
+		"message": "book successfully added",
+		"book":    newBook,
+	})
 }
 
 func (h *Handler) CheckOutBook(c *gin.Context) {
