@@ -1,5 +1,7 @@
 package main
 
+import "golibraryApi/router"
+
 type book struct {
 	ID       string `json:"id"`
 	Title    string `json:"title"`
@@ -15,5 +17,6 @@ var books = []book{
 }
 
 func main() {
+	library := router.SetupRouter()
 
 }
