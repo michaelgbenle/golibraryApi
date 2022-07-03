@@ -38,7 +38,11 @@ func (h *Handler) AddBook(c *gin.Context) {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": "unable to bind json"})
 		return
 	}
-
+	err = h.DB.AddNewBook(newBook)
+	if err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": "unable to add book"})
+		return
+	}
 	c.IndentedJSON(http.StatusCreated, gin.H{"message": newBook})
 }
 

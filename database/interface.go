@@ -10,6 +10,7 @@ import (
 type DB interface {
 	GetAllBooks() ([]models.Book, error)
 	BookById(id string) (*models.Book, error)
+	AddNewBook(book models.Book) error
 }
 
 type DbParameters struct {
