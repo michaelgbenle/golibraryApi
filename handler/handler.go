@@ -36,7 +36,7 @@ func AddBook(c *gin.Context) {
 	books = append(books, newBook)
 	c.IndentedJSON(http.StatusCreated, gin.H{"message": newBook})
 }
-func checkOutBook(c *gin.Context) {
+func CheckOutBook(c *gin.Context) {
 	id := c.Query("id")
 	sBook, err := bookById(id)
 	if err != nil {
