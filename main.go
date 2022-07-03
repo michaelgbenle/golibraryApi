@@ -1,9 +1,5 @@
 package main
 
-import (
-	"github.com/gin-gonic/gin"
-)
-
 type book struct {
 	ID       string `json:"id"`
 	Title    string `json:"title"`
@@ -19,14 +15,5 @@ var books = []book{
 }
 
 func main() {
-	router := gin.Default()
-	router.GET("/books", getBooks)
-	router.POST("/addbook", addBook)
-	router.GET("/getbook/:id", getBookById)
-	router.PATCH("/checkout", checkOutBook)
-	router.PATCH("/return", returnBook)
-	err := router.Run("localhost:8080")
-	if err != nil {
-		return
-	}
+
 }
