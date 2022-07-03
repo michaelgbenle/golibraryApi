@@ -23,12 +23,12 @@ func (h *Handler) GetBooks(c *gin.Context) {
 
 func (h *Handler) GetBookById(c *gin.Context) {
 	id := c.Param("id")
-	sBook, err := bookById(id)
+	book, err := h.DB.BookById(id)
 	if err != nil {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
 		return
 	}
-	c.IndentedJSON(http.StatusOK, gin.H{"message": sBook})
+	c.IndentedJSON(http.StatusOK, gin.H{"message": book})
 }
 func (h *Handler) AddBook(c *gin.Context) {
 	var newBook book
