@@ -55,8 +55,8 @@ func (pdb *PostgresDb) AddNewBook(book models.Book) error {
 func (pdb *PostgresDb) Checkout(id, copies string) (*models.Book, error) {
 	var book *models.Book
 	intCopies, _ := strconv.Atoi(copies)
-	book.Quantity -= intCopies
-	if err := pdb.DB.Model(book).Where("id = ?", id).Update().Error; err != nil {
+	newQuantity := book.Quantity - intCopies
+	if err := pdb.DB.Model(book).Where("id = ?", id).Update(book.Quantity).Error; err != nil {
 		return nil, err
 	}
 	return book, nil
