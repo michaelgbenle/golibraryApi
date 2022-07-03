@@ -11,5 +11,5 @@ func SetupRouter() *gin.Engine {
 	router.POST("/addbook", handler.addBook)
 	router.GET("/getbook/:id", handler.getBookById)
 	router.PATCH("/checkout", handler.checkOutBook)
-	router.PATCH("/return", returnBook)
+	router.PATCH("/return", handler.returnBook)
 }
