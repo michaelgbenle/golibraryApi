@@ -29,7 +29,7 @@ func (pdb *PostgresDb) SetupDb(host, user, password, dbName, port string) error 
 
 //GET ALL PRODUCTS FROM DB
 func (pdb *PostgresDb) GetAllBooks() []models.Book {
-	var products []models.Product
+	var products []models.Book
 	if err := pdb.DB.Preload("Images").Find(&products).Error; err != nil {
 		log.Println("Could not find product", err)
 	}
