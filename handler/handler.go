@@ -3,6 +3,7 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"golibraryApi/database"
+	"golibraryApi/models"
 	"net/http"
 )
 
@@ -31,15 +32,16 @@ func (h *Handler) GetBookById(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"message": book})
 }
 func (h *Handler) AddBook(c *gin.Context) {
-	var newBook book
+	var newBook models.Book
 	err := c.ShouldBindJSON(&newBook)
 	if err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": "unable to bind json"})
 		return
 	}
-	books = append(books, newBook)
+
 	c.IndentedJSON(http.StatusCreated, gin.H{"message": newBook})
 }
+
 func (h *Handler) CheckOutBook(c *gin.Context) {
 	id := c.Query("id")
 	sBook, err := bookById(id)
