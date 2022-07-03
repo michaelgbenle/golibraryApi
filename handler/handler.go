@@ -52,7 +52,7 @@ func (h *Handler) AddBook(c *gin.Context) {
 func (h *Handler) CheckOutBook(c *gin.Context) {
 	id := c.Query("id")
 	copies := c.Query("copies")
-	sBook, err := bookById(id)
+	sBook, err := h.DB.bookById(id)
 	if err != nil {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
 		return
