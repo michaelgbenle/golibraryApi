@@ -18,5 +18,8 @@ func Start() error {
 	}
 	routes, port := router.SetupRouter(h)
 	err = routes.Run(":" + port)
+	if err != nil {
+		log.Fatal(err)
+	}
 	return nil
 }
