@@ -79,7 +79,7 @@ func (h *Handler) CheckOutBook(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": "book checked out successfully ",
-		"updated": newBook,
+		"book":    newBook,
 	})
 }
 
