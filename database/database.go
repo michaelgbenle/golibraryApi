@@ -22,5 +22,5 @@ func (pdb *PostgresDb) SetupDb() {
 	}
 	pdb.DB = db
 
-	err
+	err = pdb.DB.AutoMigrate(models.Book)
 }
