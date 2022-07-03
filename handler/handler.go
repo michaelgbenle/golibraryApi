@@ -61,10 +61,10 @@ func (h *Handler) CheckOutBook(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not available"})
 		return
 	}
-
+	newBook, err := h.DB.Checkout(id, copies)
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": "book successfully returned",
-		"updated": book,
+		"updated": newBook,
 	})
 }
 
