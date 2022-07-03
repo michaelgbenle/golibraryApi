@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"golibraryApi/database"
 	"golibraryApi/models"
+	"log"
 	"net/http"
 )
 
@@ -34,12 +35,15 @@ func (h *Handler) GetBookById(c *gin.Context) {
 func (h *Handler) AddBook(c *gin.Context) {
 	var newBook models.Book
 	err := c.ShouldBindJSON(&newBook)
+
 	if err != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": "unable to bind json"})
 		return
 	}
-	err = h.DB.AddNewBook(newBook)
-	if err != nil {
+
+	lerr := h.DB.AddNewBook(newBook)
+
+	if lerr != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": "unable to add book"})
 		return
 	}
@@ -50,9 +54,14 @@ func (h *Handler) AddBook(c *gin.Context) {
 }
 
 func (h *Handler) CheckOutBook(c *gin.Context) {
+	//info := &models.CheckOutBook{}
+	//c.ShouldBindJSON(info)
+	//book, err := h.DB.BookById(info.Id)
 	id := c.Query("id")
 	copies := c.Query("copies")
+
 	book, err := h.DB.BookById(id)
+	log.Println(book)
 	if err != nil {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
 		return
@@ -61,6 +70,7 @@ func (h *Handler) CheckOutBook(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not available"})
 		return
 	}
+	log.Println(id)
 	newBook, berr := h.DB.Checkout(id, copies)
 	if berr != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": " could not checkout book"})

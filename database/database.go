@@ -39,24 +39,24 @@ func (pdb *PostgresDb) GetAllBooks() ([]models.Book, error) {
 
 func (pdb *PostgresDb) BookById(id string) (*models.Book, error) {
 	var book models.Book
-	if err := pdb.DB.Where("ID = ?", id).First(&book).Error; err != nil {
+	if err := pdb.DB.Where("ID = ?", id).Find(&book).Error; err != nil {
 		return nil, err
 	}
 	return &book, nil
 }
 
 func (pdb *PostgresDb) AddNewBook(book models.Book) error {
-	if err := pdb.DB.Create(book).Error; err != nil {
+	if err := pdb.DB.Create(&book).Error; err != nil {
 		return err
 	}
 	return nil
 }
 
 func (pdb *PostgresDb) Checkout(id, copies string) (*models.Book, error) {
-	var book *models.Book
+	book := &models.Book{}
 	intCopies, _ := strconv.Atoi(copies)
-	newQuantity := book.Quantity - intCopies
-	if err := pdb.DB.Model(book).Where("id = ?", id).Update(strconv.Itoa(book.Quantity), newQuantity).Error; err != nil {
+
+	if err := pdb.DB.Model(book).Where("ID = ?", id).Update(strconv.Itoa(book.Quantity), book.Quantity-intCopies).Error; err != nil {
 		return nil, err
 	}
 	return book, nil
