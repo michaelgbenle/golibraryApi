@@ -80,7 +80,7 @@ func (h *Handler) ReturnBook(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
 		return
 	}
-
+	newBook, berr := h.DB.Checkin(id, copies)
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": "book successfully returned",
 		"updated": book,
