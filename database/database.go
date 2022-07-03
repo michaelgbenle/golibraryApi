@@ -44,4 +44,4 @@ func (pdb *PostgresDb) BookById(id string) (*models.Book, error) {
 	return &book, nil
 }
 
-func (pdb *PostgresDb) BookById(id string) (*models.Book, error) {}
+func (pdb *PostgresDb) AddNewBook(book models.Book) (*models.Book, error) {}
