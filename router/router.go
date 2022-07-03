@@ -13,6 +13,7 @@ func SetupRouter(h *handler.Handler) (*gin.Engine, string) {
 	router.GET("/getbook/:id", handler.GetBookById)
 	router.PATCH("/checkout", h.CheckOutBook)
 	router.PATCH("/return", h.ReturnBook)
+
 	port := os.Getenv("PORT")
 
 	return router, port

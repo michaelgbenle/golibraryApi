@@ -16,7 +16,7 @@ func Start() error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	route, port := router.SetupRouter(h)
-
+	routes, port := router.SetupRouter(h)
+	err = routes.Run(":" + port)
 	return nil
 }
