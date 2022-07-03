@@ -27,12 +27,11 @@ func (pdb *PostgresDb) SetupDb(host, user, password, dbName, port string) error 
 	return nil
 }
 
-//GET ALL books FROM DB
+// GetAllBooks gets ALL books FROM DB
 func (pdb *PostgresDb) GetAllBooks() ([]models.Book, error) {
 	var books []models.Book
 	if err := pdb.DB.Find(&books).Error; err != nil {
 		return nil, err
 	}
-
 	return books, nil
 }

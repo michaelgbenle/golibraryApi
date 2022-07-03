@@ -2,11 +2,13 @@ package database
 
 import (
 	"github.com/joho/godotenv"
+	"golibraryApi/models"
 	"log"
 	"os"
 )
 
 type DB interface {
+	GetAllBooks() ([]models.Book, error)
 }
 
 type DbParameters struct {
