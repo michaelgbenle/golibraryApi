@@ -36,6 +36,10 @@ func (pdb *PostgresDb) GetAllBooks() ([]models.Book, error) {
 	return books, nil
 }
 
-func (pdb *PostgresDb) BookById() (models.Book, error) {
-	return book, nil
+func (pdb *PostgresDb) BookById(id string) (*models.Book, error) {
+	var book models.Book
+	if err := pdb.DB.Where("ID = ?", id).First(&book).Error; err != nil {
+		return nil, err
+	}
+	return &book, nil
 }
