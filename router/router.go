@@ -1,6 +1,7 @@
 package router
 
-router := gin.Default()
+import "github.com/gin-gonic/gin"
+
 router.GET("/books", getBooks)
 router.POST("/addbook", addBook)
 router.GET("/getbook/:id", getBookById)
@@ -11,6 +12,6 @@ if err != nil {
 return
 }
 
-func SetupRouter(){
-
+func SetupRouter() *gin.Engine{
+	router := gin.Default()
 }
