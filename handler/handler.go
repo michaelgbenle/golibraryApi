@@ -75,11 +75,11 @@ func (h *Handler) CheckOutBook(c *gin.Context) {
 func (h *Handler) ReturnBook(c *gin.Context) {
 	id := c.Query("id")
 	copies := c.Query("copies")
-	book, err := h.DB.BookById(id)
-	if err != nil {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
-		return
-	}
+	//book, err := h.DB.BookById(id)
+	//if err != nil {
+	//	c.IndentedJSON(http.StatusNotFound, gin.H{"error": "book not found"})
+	//	return
+	//}
 	newBook, berr := h.DB.Checkin(id, copies)
 	if berr != nil {
 		c.IndentedJSON(http.StatusInternalServerError, gin.H{"error": " could not update"})
