@@ -18,5 +18,6 @@ var books = []book{
 
 func main() {
 	library := router.SetupRouter()
+	err := library.Run(":8080")
 
 }
