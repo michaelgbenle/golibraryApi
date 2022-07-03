@@ -2,8 +2,13 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
+	"golibraryApi/database"
 	"net/http"
 )
+
+type Handler struct {
+	DB database.DB
+}
 
 func bookById(id string) (*book, error) {
 	for i, v := range books {
