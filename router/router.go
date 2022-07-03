@@ -10,3 +10,7 @@ err := router.Run("localhost:8080")
 if err != nil {
 return
 }
+
+func SetupRouter(){
+
+}
