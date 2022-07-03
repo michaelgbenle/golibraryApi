@@ -87,6 +87,6 @@ func (h *Handler) ReturnBook(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": "book successfully returned",
-		"updated": book,
+		"updated": newBook,
 	})
 }
