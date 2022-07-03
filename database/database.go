@@ -35,3 +35,7 @@ func (pdb *PostgresDb) GetAllBooks() ([]models.Book, error) {
 	}
 	return books, nil
 }
+
+func (pdb *PostgresDb) BookById() (models.Book, error) {
+	return book, nil
+}
