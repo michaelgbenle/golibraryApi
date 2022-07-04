@@ -75,8 +75,9 @@ func (pdb *PostgresDb) Checkin(id, copies string) (*models.Book, error) {
 }
 
 func (pdb *PostgresDb) Deletebook(id string) error {
-	book := models.Book{}
-	if err := pdb.DB.Delete(book).Where("id= ?", id).Error; err != nil {
+	//book := models.Book{}
+	book, _ := pdb.BookById(id)
+	if err := pdb.DB.Delete(book).Error; err != nil {
 		return err
 	}
 	return nil
