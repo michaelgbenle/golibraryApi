@@ -111,6 +111,6 @@ func (h *Handler) DeleteBook(c *gin.Context) {
 		})
 	}
 	c.IndentedJSON(http.StatusOK, gin.H{
-		"message": "deleted succefully",
+		"message": "deleted successfully",
 	})
 }
