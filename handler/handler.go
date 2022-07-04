@@ -110,4 +110,7 @@ func (h *Handler) DeleteBook(c *gin.Context) {
 			"error": "unable to delete",
 		})
 	}
+	c.IndentedJSON(http.StatusOK, gin.H{
+		"message": "deleted succefully",
+	})
 }
