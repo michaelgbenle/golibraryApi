@@ -107,9 +107,9 @@ func (h *Handler) DeleteBook(c *gin.Context) {
 	err := h.DB.Deletebook(id)
 	if err != nil {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{
-			"error": "unable to delete"
-			return
+			"error": "unable to delete",
 		})
+		return
 	}
 	c.IndentedJSON(http.StatusOK, gin.H{
 		"message": "deleted successfully",
