@@ -73,3 +73,5 @@ func (pdb *PostgresDb) Checkin(id, copies string) (*models.Book, error) {
 	}
 	return book, nil
 }
+
+func (pdb *PostgresDb)
