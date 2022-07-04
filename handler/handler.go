@@ -101,3 +101,13 @@ func (h *Handler) ReturnBook(c *gin.Context) {
 		"updated": newBook,
 	})
 }
+
+func (h *Handler) DeleteBook(c *gin.Context) {
+	id := c.Param("id")
+	err := h.DB.Deletebook(id)
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{
+			"error": "",
+		})
+	}
+}
