@@ -13,7 +13,7 @@ func SetupRouter(h *handler.Handler) (*gin.Engine, string) {
 	router.GET("/getbook/:id", h.GetBookById)
 	router.PATCH("/checkout", h.CheckOutBook)
 	router.PATCH("/return", h.ReturnBook)
-	router.DELETE("/delete", h.ReturnBook)
+	router.DELETE("/delete", h.Deletebook)
 
 	port := os.Getenv("PORT")
 
