@@ -13,7 +13,7 @@ type DB interface {
 	AddNewBook(book models.Book) error
 	Checkout(id, copies string) (*models.Book, error)
 	Checkin(id, copies string) (*models.Book, error)
-	Deletebook(id, copies string) (*models.Book, error)
+	Deletebook(id string) (*models.Book, error)
 }
 
 type DbParameters struct {
